@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import datetime
 
 class Person(object):
 	"""docstring for Person"""
@@ -6,13 +7,16 @@ class Person(object):
 	def __init__(self, vorname, name, gebDat):
 		self.vorname = vorname
 		self.name = name
-		self.gebDat = gebDat
+		self.gebDat = datetime.datetime.strptime(gebDat, '%d.%m.%Y')
 
 	def __repr__(self):
-		return 'Person(vorname=' + self.vorname + ', name=' + self.name + ', gebDat=' + self.gebDat + ')'
+		return 'Person(vorname=' + self.vorname + ', name=' + self.name + ', gebDat=' + self.getGebDatAsString() + ')'
 
 	def sortByVorname(self):
 		return self.vorname
+
+	def getGebDatAsString(self):
+		return self.gebDat.strftime('%d.%m.%Y')
 
 def main():
     p1 = Person('Hans', 'Wurst', '01.01.1990')
