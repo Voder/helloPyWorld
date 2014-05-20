@@ -28,7 +28,7 @@ def main():
     print (persons)
 
     print('Sorted')
-    print (sorted (persons, key=Person.sortByVorname))
+    print (sorted (persons, key=lambda person: person.gebDat))
 
 def sortByName(person):
 	return person.name
