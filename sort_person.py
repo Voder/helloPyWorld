@@ -31,11 +31,21 @@ def main():
     persons = [p1, p2, p3, p4]
     print (persons)
 
-    print('Sorted')
-    print (sorted (persons, key=lambda person: person.gebDat))
+    print ('Spitznamen ermitteln:')
+    persons = map(spitzname, persons)
+    print (list(map(lambda p: str(p) + '+ spitzname='+p.spitzname, persons)))
 
-def sortByName(person):
-	return person.name
+def spitzname(person):
+	if person.gebDat.year > 1990:
+		person.spitzname = 'Jungspund'
+	elif person.gebDat.year > 1980:
+		person.spitzname = 'Senior'
+	elif person.gebDat.year > 1960:
+		person.spitzname = 'Oldie'
+	else:
+		person.spitzname = 'Gruftie'
+	return person
+
 
 main()
 
